@@ -1,11 +1,17 @@
-import React from 'react';
+import styles from '../../styles/Containers/MainContainer.module.scss'
 
-const MainContainer = () => {
+const MainContainer = ({ children, optionClass }) => {
   return (
-    <div>
-      
+    <div
+      className={`${styles.container} ${optionClass}`}
+    >
+      {children}
     </div>
   );
 };
+
+MainContainer.defaultProps = {
+  optionClass: undefined,
+}
 
 export default MainContainer;
