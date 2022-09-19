@@ -46,6 +46,8 @@ const Navbar = () => {
               <h3>Settings</h3>
             </ListItemLink>
           </div>
+
+          {/* Auth Menu */}
           <ListItemLink url="logout">
             <h3>Logout</h3>
           </ListItemLink>
