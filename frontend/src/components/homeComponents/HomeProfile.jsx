@@ -5,7 +5,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 //UTILS
-import { useUser } from "../../queries/user";
+// import { useUser } from "../../queries/user";
 
 const HomeProfile = () => {
   return (
@@ -15,18 +15,18 @@ const HomeProfile = () => {
       </div>
       <div className={styles.info}>
         <span className={styles.welcome}>Hi</span>
-        <div> className={styles.options}
+        <div className={styles.options}>
           <Link to="profile">
             <span>Profile</span>
-            <BePencil />
+            <BsPencil />
           </Link>
           <Link to="settings">
             <span>Settings</span>
-            <BePencil />
+            <BsPencil />
           </Link>
           <Link to="wallet">
             <span>Wallet</span>
-            <BePencil />
+            <BsPencil />
           </Link>
         </div>
       </div>
