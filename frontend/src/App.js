@@ -1,10 +1,15 @@
 import './styles/App.scss'
+import { Routes, Route, Outlet } from 'react-router-dom'
+
+//Components
 import PageContainer from './components/Containers/PageContainer';
 import Navbar from './components/Navbar/Navbar';
-import { Routes, Route, Outlet } from 'react-router-dom'
 import MobileNavbar from './components/Navbar/MobileNavbar';
 import MainContainer from './components/Containers/MainContainer';
+
+// Pages
 import Auth from './pages/Auth';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -20,6 +25,10 @@ function App() {
 
           {/* Protected Routes */}
           <Route element={<Outlet />} />
+
+          {/* Home */}
+          <Route path="/" element={<Home />}/>
+
           {/* 404 Pages */}
           <Route
             path="/*"
