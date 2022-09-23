@@ -10,6 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Session {
+  id      String   @id @default(uuid())
+  sid     String   @unique
+  data    String
+  expires DateTime
+}
+
 model User {
   id        Int     @id @default(autoincrement())
   firstName String?
