@@ -25,9 +25,9 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://localhost:5000",
-      "http://accountbook:5000",  
-      "https://accountbook:5000",  
-      "https://accountbook"  
+      "http://accountbookamber:5000",  
+      "https://accountbookamber:5000",  
+      "https://accountbookamber"  
     ],
     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE", "PATCH"],
     credentials: true,
