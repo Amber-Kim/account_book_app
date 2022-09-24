@@ -25,8 +25,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://localhost:5000",
-      "http://accountbookamber:5000",
-      "https://accountbookamber"  
+      "https://accountbookamber.herokuapp.com/",
     ],
     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE", "PATCH"],
     credentials: true,
