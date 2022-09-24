@@ -12,6 +12,8 @@ import { AuthProvider } from './context/AuthProvider';
 // Pages
 import Auth from './pages/Auth';
 import Home from './pages/Home';
+import Settings from './pages/Settings';
+import Profile from "./pages/Profile";
 
 // React Query
 import { ReactQueryDevtools } from 'react-query/devtools'
@@ -21,36 +23,42 @@ import { queryClient } from './constants/config'
 function App() {
   return (
     <div className="App">
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <PageContainer optionClass={"PageContainer"}>
-            <Navbar />
-            <div className="mobileMenu">
-              <MobileNavbar />
-            </div>
-            <Routes>
-              {/* Auth Page */}
-              <Route path="/auth" element={<Auth />} />
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <PageContainer optionClass={"PageContainer"}>
+              <Navbar />
+              <div className="mobileMenu">
+                <MobileNavbar />
+              </div>
+              <Routes>
+                {/* Auth Page */}
+                <Route path="/auth" element={<Auth />} />
 
-              {/* Protected Routes */}
-              <Route element={<ProtectedRoutes />} />
+                {/* Protected Routes */}
+                <Route element={<ProtectedRoutes />} />
 
-              {/* Home */}
-              <Route path="/" element={<Home />}/>
+                {/* Home */}
+                <Route path="/" element={<Home />}/>
 
-              {/* 404 Pages */}
-              <Route
-                path="/*"
-                element={
-                  <MainContainer>
-                    <span style={{ fontSize: "1.2rem" }}>404 Not Found</span>
-                  </MainContainer>
-                } 
-              />
-            </Routes>
-          </PageContainer>
-        </AuthProvider>
-      </QueryClientProvider>
+                {/* Settings */}
+                <Route path="/settings" element={<Settings />}/>
+                
+                {/* PROFILE */}
+                <Route path="/profile" element={<Profile />} />
+
+                {/* 404 Pages */}
+                <Route
+                  path="/*"
+                  element={
+                    <MainContainer>
+                      <span style={{ fontSize: "1.2rem" }}>404 Not Found</span>
+                    </MainContainer>
+                  } 
+                />
+              </Routes>
+            </PageContainer>
+          </AuthProvider>
+        </QueryClientProvider>
     </div>
   );
 }

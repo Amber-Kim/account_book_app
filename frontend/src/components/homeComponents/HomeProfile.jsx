@@ -5,9 +5,10 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 //UTILS
-// import { useUser } from "../../queries/user";
+import { useUser } from "../../queries/user";
 
 const HomeProfile = () => {
+  const { data } = useUser();
   return (
     <div className={styles.container}>
       <div className={styles.iconContainer}>
