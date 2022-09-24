@@ -27,10 +27,6 @@ const HomeProfile = () => {
             <span>Settings</span>
             <IoSettingsOutline />
           </Link>
-          <Link to="wallet">
-            <span>Wallet</span>
-            <BsWallet2 />
-          </Link>
         </div>
       </div>
     </div>
