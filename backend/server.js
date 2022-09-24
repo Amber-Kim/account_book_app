@@ -55,6 +55,7 @@ app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", transactionRoutes);
 app.use("/api", categoriesRoutes);
+
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "index.html"));
 });
