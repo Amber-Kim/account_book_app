@@ -6,6 +6,8 @@ import PageContainer from './components/Containers/PageContainer';
 import Navbar from './components/Navbar/Navbar';
 import MobileNavbar from './components/Navbar/MobileNavbar';
 import MainContainer from './components/Containers/MainContainer';
+import ProtectedRoutes from './components/ProtectedRoutes';
+import { AuthProvider } from './context/AuthProvider';
 
 // Pages
 import Auth from './pages/Auth';
@@ -20,32 +22,34 @@ function App() {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        <PageContainer optionClass={"PageContainer"}>
-          <Navbar />
-          <div className="mobileMenu">
-            <MobileNavbar />
-          </div>
-          <Routes>
-            {/* Auth Page */}
-            <Route path="/auth" element={<Auth />} />
+        <AuthProvider>
+          <PageContainer optionClass={"PageContainer"}>
+            <Navbar />
+            <div className="mobileMenu">
+              <MobileNavbar />
+            </div>
+            <Routes>
+              {/* Auth Page */}
+              <Route path="/auth" element={<Auth />} />
 
-            {/* Protected Routes */}
-            <Route element={<Outlet />} />
+              {/* Protected Routes */}
+              <Route element={<ProtectedRoutes />} />
 
-            {/* Home */}
-            <Route path="/" element={<Home />}/>
+              {/* Home */}
+              <Route path="/" element={<Home />}/>
 
-            {/* 404 Pages */}
-            <Route
-              path="/*"
-              element={
-                <MainContainer>
-                  <span style={{ fontSize: "1.2rem" }}>404 Not Found</span>
-                </MainContainer>
-              } 
-            />
-          </Routes>
-        </PageContainer>
+              {/* 404 Pages */}
+              <Route
+                path="/*"
+                element={
+                  <MainContainer>
+                    <span style={{ fontSize: "1.2rem" }}>404 Not Found</span>
+                  </MainContainer>
+                } 
+              />
+            </Routes>
+          </PageContainer>
+        </AuthProvider>
       </QueryClientProvider>
     </div>
   );

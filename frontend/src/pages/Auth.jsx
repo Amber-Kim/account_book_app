@@ -1,17 +1,27 @@
-import styles from '../styles/authComponents/Auth.module.scss'
-import MainContainer from '../components/Containers/MainContainer';
-import { Title } from '../components/Titles/Titles'
-import { useState, useEffect } from 'react';
+import styles from "../styles/authComponents/Auth.module.scss";
 
-import { useLoginUser, useRegisterUser } from '../queries/user';
+import MainContainer from "../components/Containers/MainContainer";
+import { Title } from "../components/Titles/Titles";
+
+import { useState, useEffect, useContext } from "react";
+
+import { useLoginUser, useRegisterUser } from "../queries/user";
+import { Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 
 const Auth = () => {
-  // Login
+  //LOGIN
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
-  // Register
+  //REGISTER
   const [regEmail, setRegEmail] = useState("");
   const [regPw, setRegPw] = useState("");
+
+  //CONTEXT
+  const { auth, setAuth } = useContext(AuthContext);
+
+  //navigate
+  const navigate = useNavigate();
 
   let body = {
     email: email,
@@ -36,6 +46,10 @@ const Auth = () => {
     error: registerErr,
   } = useRegisterUser();
 
+  useEffect(() => {
+    if (auth) navigate("/");
+  });
+
   return (
 <MainContainer>
       {/* LOGIN */}
@@ -58,7 +72,18 @@ const Auth = () => {
           />
 
           {/* Login Button*/}
-          <button>Login Now</button>
+          <button
+            onClick={() =>
+              loginHandler(body, {
+                onError: () => {
+                  console.log(loginErr);
+                },
+                onSuccess: () => setAuth(true),
+              })
+            }
+          >
+            Login Now
+          </button>
         </div>
       </form>
 
@@ -84,9 +109,25 @@ const Auth = () => {
             value={regPw}
             autoComplete="new-password"
           />
-          
-        {/* Register button */}
-        <button onClick={() => registerHandler(regBody)}>Register</button>
+
+          { /* Register Btn */}
+          <button
+            onClick={() =>
+              registerHandler(regBody, {
+                //ONSUCCESS USE LOGINHANDLER
+                onSuccess: () => {
+                  loginHandler(regBody, {
+                    onSuccess: () => setAuth(true),
+                    onError: () => {
+                      console.log(loginErr);
+                    },
+                  });
+                },
+              })
+            }
+          >
+            Register Now
+          </button>
         </div>
       </form>
     </MainContainer>
