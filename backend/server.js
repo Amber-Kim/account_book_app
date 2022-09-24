@@ -4,14 +4,19 @@ const { PrismaClient } = require("@prisma/client");
 const cors = require("cors");
 const path = require("path");
 
-// ROUTES
-const authRoutes = require('./routes/authRoutes')
-const userRoutes = require('./routes/userRoutes')
+//ROUTES
+const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
+const transactionRoutes = require("./routes/transactionRoutes");
+const categoriesRoutes = require("./routes/categoriesRoutes");
 
 const app = express();
 const port = process.env.PORT || 5000;
 const { prisma } = require("./constats/config");
 const PrismaStore = require("./lib/index")(session);
+
+//SERVER CLIENT FOLDER IE REACT BUILD
+app.use(express.static(path.join(__dirname, "client")));
 
 //CORS
 //ADD YOUR URL HERE
@@ -45,10 +50,14 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 //ROUTES
 app.use("/api", authRoutes);
-app.use("/api", userRoutes)
+app.use("/api", userRoutes);
+app.use("/api", transactionRoutes);
+app.use("/api", categoriesRoutes);
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "index.html"));
+});
 
 app.listen(port, () => {
   console.log(`SERVER STARTED : ${port}`);
