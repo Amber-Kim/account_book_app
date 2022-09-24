@@ -3,6 +3,6 @@ const queryClient = new QueryClient();
 
 const AXIOS_URL = 
   process.env.NODE_ENV === "production"
-    ? ""
+    ? "https://accountbookamber.herokuapp.com/api/"
     : "http://localhost:5000/api/"
 export { AXIOS_URL, queryClient };
