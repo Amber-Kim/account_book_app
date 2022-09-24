@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 const { prisma } = require("./constats/config");
 const PrismaStore = require("./lib/index")(session);
 
-//SERVER CLIENT FOLDER IE REACT BUILD
+//SERVER CLIENT FOLDER If REACT BUILD
 app.use(express.static(path.join(__dirname, "client")));
 
 //CORS
