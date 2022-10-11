@@ -2,6 +2,7 @@
 
 ## Preview
 
+![account](https://user-images.githubusercontent.com/95224457/195198310-e86bbe19-e429-4d66-a7d3-f5d25c9373db.gif)
 
 This is the ReactJs Node Full Stack Account Book App With Postgres & Prisma.
 
