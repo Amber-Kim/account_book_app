@@ -83,7 +83,21 @@ const ProtectedRoutes = () => {
 
 ### 8. Login & Logout Function 
  * pages > Auth.jsx
+```
+  //LOGIN
+  const [email, setEmail] = useState("");
+  const [pw, setPw] = useState("");
+  //REGISTER
+  const [regEmail, setRegEmail] = useState("");
+  const [regPw, setRegPw] = useState("");
 
+  //CONTEXT
+  const { auth, setAuth } = useContext(AuthContext);
+
+  //navigate
+  const navigate = useNavigate();
+  ```
+  
 
 ### 9. Express User Controller
  * controllers > userController.js
